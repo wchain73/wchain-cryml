@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import pickle
 from datetime import datetime
-from ml_core import fetch_8h_kline, fetch_binance_futures_data, compute_features
+from backend.ml_core import fetch_8h_kline, fetch_binance_futures_data, compute_features
 import telegram
 from telegram import Bot
 import asyncio
