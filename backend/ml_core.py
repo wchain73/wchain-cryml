@@ -10,11 +10,9 @@ from xgboost import XGBClassifier
 # 資料抓取
 def fetch_8h_kline(symbol):
     exchange = ccxt.binance({
-        'apiKey': 'uRNwyJkoQjr9UzpPehYWzLIRLj7TORUvVE9m24lO0P1FJGdNfE2yemA0xIiW68W9',
-        'secret': 'iMFvh3UWMML5JJjWArfMmkqF6liX3tM14wS0KFsERaZlUpXpAaSgIwumPJjOsvrz',
         "rateLimit": 1200, "options": {"defaultType": "future"}})
     market = symbol.replace('/', '')
-    ohlcv = exchange.fetch_ohlcv(symbol, timeframe='8h', limit=2)
+    ohlcv = exchange.fetch_ohlcv(symbol, timeframe='15m', limit=32)
     df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
     df['symbol'] = market
     return df
