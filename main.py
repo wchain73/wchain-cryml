@@ -24,4 +24,4 @@ def chart():
     return jsonify(get_historical_chart_data(symbol))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=9600)
