@@ -24,4 +24,9 @@ def chart():
     return jsonify(get_historical_chart_data(symbol))
 
 if __name__ == "__main__":
+    # 手動抓資料並訓練模型
+    df = fetch_all_features()
+    df.to_csv("market_features.csv", mode='a', index=False, header=not os.path.exists("market_features.csv"))
+    train_model(df)
+
     app.run(host="0.0.0.0", port=9600)
