@@ -1,13 +1,15 @@
 {
-  "name": "crypto-ml-frontend",
+  "name": "crypto-dashboard",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "chart.js": "^3.9.1",  // 記得安裝 chart.js
-    "react": "^17.0.0",
-    "react-chartjs-2": "^3.0.0",  // 用來與 Chart.js 整合的 React 組件
-    "react-dom": "^17.0.0",
-    "react-scripts": "4.0.3"
+    "axios": "^0.24.0",
+    "chart.js": "^3.7.0",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.4",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.4.4"
   },
   "scripts": {
     "start": "react-scripts start",

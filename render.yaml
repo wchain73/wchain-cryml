@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: crypto-ml-backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    plan: free
+    region: oregon
+    branch: main
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
+    autoDeploy: true
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: your_telegram_token
+      - key: TELEGRAM_CHAT_ID
+        value: your_chat_id
+
+  - type: cron
+    name: crypto-ml-cron
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python jobs/schedule_runner.py"
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
+    region: oregon
+    plan: free
+    branch: main
+    schedule: "*/15 * * * *"
