@@ -1,0 +1,9 @@
+Flask
+ccxt
+pandas
+xgboost
+requests
+sklearn
+schedule
+telegram
+
