@@ -1,9 +1,0 @@
-flask
-pandas
-ccxt
-xgboost
-scikit-learn
-python-telegram-bot==20.0
-requests
-schedule
-gunicorn
