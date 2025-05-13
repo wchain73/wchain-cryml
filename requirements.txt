@@ -1,0 +1,23 @@
+# Web framework
+Flask==2.3.3
+
+# ML and preprocessing
+pandas==2.2.2
+scikit-learn==1.4.2
+xgboost==2.0.3
+
+# Crypto market data
+ccxt==4.2.80
+requests==2.31.0
+
+# Scheduling
+schedule==1.2.1
+
+# Telegram Bot
+python-telegram-bot==20.7
+
+# Async support
+aiohttp==3.9.5
+
+# Environment variables (for local dev)
+python-dotenv==1.0.1
