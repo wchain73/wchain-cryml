@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from backend.routes import get_symbols, get_latest_data, get_historical_chart_data
 from backend.routes import app
 
 app = Flask(__name__)

@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import pickle
 from datetime import datetime
-from backend.ml_core import fetch_8h_kline, fetch_binance_futures_data, compute_features
+from backend.ml_core import fetch_8h_kline, fetch_binance_futures_data, compute_features, fetch_all_features
 import telegram
 from telegram import Bot
 import asyncio
@@ -116,8 +116,4 @@ def predict_route():
 
 
 if __name__ == '__main__':
-    # 手動抓資料並訓練模型
-    df = fetch_all_features()
-    df.to_csv("market_features.csv", mode='a', index=False, header=not os.path.exists("market_features.csv"))
-    train_model(df)
     app.run(debug=True)
