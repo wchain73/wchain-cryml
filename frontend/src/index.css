@@ -1,37 +1,10 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Global styles */
+// frontend/src/index.css
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
-  line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
+#root {
   padding: 2rem;
-}
-
-/* Chart container */
-.chart-wrapper {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-/* Dropdown styles */
-.select-symbol {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
 }

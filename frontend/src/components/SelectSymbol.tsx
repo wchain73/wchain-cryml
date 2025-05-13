@@ -1,21 +1,21 @@
+// frontend/src/components/SelectSymbol.tsx
 import React from 'react';
 
-interface SelectSymbolProps {
+type Props = {
   symbols: string[];
-  onSelect: (symbol: string) => void;
-}
+  selected: string;
+  onChange: (value: string) => void;
+};
 
-const SelectSymbol: React.FC<SelectSymbolProps> = ({ symbols, onSelect }) => {
+const SelectSymbol: React.FC<Props> = ({ symbols, selected, onChange }) => {
   return (
-    <div>
-      <select onChange={(e) => onSelect(e.target.value)}>
-        {symbols.map((symbol) => (
-          <option key={symbol} value={symbol}>
-            {symbol}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select value={selected} onChange={(e) => onChange(e.target.value)}>
+      {symbols.map((s) => (
+        <option key={s} value={s}>
+          {s}
+        </option>
+      ))}
+    </select>
   );
 };
 

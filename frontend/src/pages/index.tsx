@@ -1,30 +1,29 @@
+// frontend/src/pages/index.tsx
 import React, { useEffect, useState } from 'react';
-import { api } from '../services/api';
+import { getSymbols, getChartData } from '../services/api';
 import SelectSymbol from '../components/SelectSymbol';
 import Chart from '../components/Chart';
 
 const IndexPage: React.FC = () => {
   const [symbols, setSymbols] = useState<string[]>([]);
-  const [selectedSymbol, setSelectedSymbol] = useState<string>('');
-  const [chartData, setChartData] = useState<any[]>([]);
+  const [selected, setSelected] = useState('BTC/USDT');
+  const [chartData, setChartData] = useState<any>(null);
 
   useEffect(() => {
-    // 這裡請換成從後端 API 獲取支持的交易對
-    setSymbols(['BTC/USDT', 'ETH/USDT']);
-    setSelectedSymbol('BTC/USDT');
+    getSymbols().then(setSymbols);
   }, []);
 
   useEffect(() => {
-    if (selectedSymbol) {
-      api.getChartData(selectedSymbol).then((data) => setChartData(data));
+    if (selected) {
+      getChartData(selected).then(setChartData);
     }
-  }, [selectedSymbol]);
+  }, [selected]);
 
   return (
     <div>
-      <h1>Crypto Prediction Dashboard</h1>
-      <SelectSymbol symbols={symbols} onSelect={setSelectedSymbol} />
-      <Chart data={chartData} />
+      <h1>Crypto ML Prediction Dashboard</h1>
+      <SelectSymbol symbols={symbols} selected={selected} onChange={setSelected} />
+      {chartData && <Chart data={chartData} />}
     </div>
   );
 };

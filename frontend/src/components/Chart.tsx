@@ -1,46 +1,47 @@
-import React, { useEffect, useState } from 'react';
+// frontend/src/components/Chart.tsx
+import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-interface ChartProps {
-  data: any[];
-}
+type Props = {
+  data: {
+    labels: string[];
+    vwap_diff: number[];
+    prediction: string[];
+  };
+};
 
-const Chart: React.FC<ChartProps> = ({ data }) => {
-  const [chartData, setChartData] = useState<any>(null);
+const Chart: React.FC<Props> = ({ data }) => {
+  const chartData = {
+    labels: data.labels,
+    datasets: [
+      {
+        label: 'VWAP Diff',
+        data: data.vwap_diff,
+        borderColor: 'rgba(75,192,192,1)',
+        fill: false
+      },
+      {
+        label: 'Prediction',
+        data: data.prediction.map((val) => (val === '上漲' ? 1 : val === '下跌' ? -1 : 0)),
+        borderColor: 'rgba(255,99,132,1)',
+        fill: false
+      }
+    ]
+  };
 
-  useEffect(() => {
-    if (data.length > 0) {
-      setChartData({
-        labels: data.map(item => item.timestamp),
-        datasets: [
-          {
-            label: 'VWAP',
-            data: data.map(item => item.vwap),
-            borderColor: 'rgba(75, 192, 192, 1)',
-            fill: false,
-          },
-          {
-            label: 'Prediction',
-            data: data.map(item => item.prediction === '上漲' ? 1 : item.prediction === '下跌' ? -1 : 0),
-            borderColor: 'rgba(255, 99, 132, 1)',
-            fill: false,
-          },
-        ],
-      });
-    }
-  }, [data]);
-
-  if (!chartData) return <div>Loading...</div>;
-
-  return (
-    <div>
-      <h2>VWAP and Prediction Trend</h2>
-      <Line data={chartData} />
-    </div>
-  );
+  return <Line data={chartData} />;
 };
 
 export default Chart;
